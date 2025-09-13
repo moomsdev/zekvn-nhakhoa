@@ -27,6 +27,8 @@
         <img src="<?php bloginfo('template_url' ); ?>/images/backtop.png" alt="icon">
     </a>
 </div>
+<script type="text/javascript" src="<?php bloginfo('template_url' ); ?>/js/swiper-bundle.min.js"></script>
+<script src="<?php bloginfo('template_url' ); ?>/js/jquery.fancybox.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url' ); ?>/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url' ); ?>/js/select2.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url' ); ?>/js/custom.js?v=<?php echo time();?>"></script>
