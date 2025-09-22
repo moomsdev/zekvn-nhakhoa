@@ -29,11 +29,13 @@
 }
 
 @mixin limitLine($number) {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: $number;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: $number !important;
+  line-clamp: $number !important;
+  -webkit-box-orient: vertical !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
 }
 
 @mixin breakText {

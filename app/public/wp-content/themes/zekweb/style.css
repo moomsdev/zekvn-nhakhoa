@@ -59,21 +59,6 @@ h6{font-size: 14px;}
 .justify-start{justify-content: flex-start;}
 .row-reverse{flex-direction:row-reverse;}
 .column-reverse{flex-direction:column-reverse;}
-@media (min-width: 576px){
-	.container, .container-sm {max-width: 540px;}
-}
-@media (min-width: 768px){
-	.container, .container-md, .container-sm { max-width: 720px;}
-}
-@media (min-width: 992px){
-	.container, .container-lg, .container-md, .container-sm {max-width: 960px;}
-}
-@media (min-width: 1200px){
-	.container, .container-lg, .container-md, .container-sm, .container-xl {max-width: 1140px;}
-}
-@media (min-width: 1400px){
-	.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {max-width: 1320px;}
-}
 
 /* input-button */
 input[type="text"],input[type="search"],input[type="password"],input[type="email"],input[type="file"],input[type="number"],input[type="date"],input[type="tel"],textarea,select{width:100%;max-width:100%;display:block;outline:none;border: 1px solid #E6E6E6;padding: 11px 12px;color: #999999;font-weight: 500;border-radius: 4px;}
@@ -165,11 +150,11 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
 #menu-mobile{display: none;}
 /* Category */
 
-.pagination{justify-content: center;}
+.pagination{padding: 30px 0 0; justify-content: center;}
 .pagination ul{margin-bottom: 0;list-style: none;}
 .pagination ul li{display: inline-block;margin: 3px;}
 .pagination ul li span,.pagination ul li a{display: block;padding: 5px;height: 38px;width: 38px;text-align: center; background: #EAEEF3;line-height: 28px;}
-.pagination ul li .current,.pagination ul li span:hover,.pagination ul li a:hover{background: #00adef;color: #fff;}
+.pagination ul li .current,.pagination ul li span:hover,.pagination ul li a:hover{background: #0B6F7E;color: #fff;}
 
 
 /* Single */
@@ -293,4 +278,45 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
 	font-weight: 900;
 	font-style: normal;
 	font-display: swap;
+}
+
+/* SVN-Darleston */
+@font-face {
+	font-family: 'SVN-Darleston';
+	src: url('fonts/SVN-Darleston.otf') format('opentype');
+	font-display: block;
+}
+
+/* Beautique Display */
+@font-face {
+	font-family: 'Beautique Display';
+	src: url('fonts/BeautiqueDisplay-Regular.otf') format('opentype');
+	font-display: swap;
+}
+
+.head-section:before {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	content: "";
+	display: block;
+	width: 100%;
+	max-width: 200px;
+	height: 100%;
+	background-image: url("./images/bg-title.png");
+	background-size: contain;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+
+.reason-img {
+	width: 100%;
+	max-width: 167px;
+	aspect-ratio: 1 / 1;
+	background: url("./images/lydo-img.png");
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-size: 100% 100%;
 }

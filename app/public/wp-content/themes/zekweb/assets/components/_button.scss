@@ -1,2 +1,87 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixin' as *;
+
+button.btnTuVan {
+    padding: 6px 16px;
+    background: linear-gradient(270deg,#BC9E54 0%,#EFD188 24%,#BC9E54 50%,#EFD188 74.5%,#BC9E54 100%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #FFF;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+
+    @include resFont(13px, 15px);
+}
+
+.btn-common {
+    position: relative;
+    margin: 10px auto;
+    width: fit-content;
+    display: block;
+    color: $primaryColor;
+    background: #e0e0e0;
+    border-radius: 30px;
+    overflow: hidden;
+
+    &:before{
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 0%;
+        background: $primaryColor;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+        transition: 0.3s all;
+    }
+
+    &:hover{
+        color: #fff;
+
+        &:before{
+            width: 100%;
+        }
+    }
+
+    .text-btn {
+        margin: 0;
+        padding: 2px 15px;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.btn-more-container {
+    margin: 40px 0 0;
+    text-align: center;
+    display: block;
+}
+
+.btn-more {
+    display: inline-flex;
+    padding: 12px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 60px;
+    background: $subColor;
+    color: #FFF;
+    text-align: justify;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: capitalize;
+    border: 1px solid transparent;
+
+    @include mediaMaxWidth($md) {
+        padding: 8px 30px;
+    }
+
+    &:hover {
+        background: transparent;
+        color: $subColor;
+        border: 1px solid $subColor;
+    }
+}

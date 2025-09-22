@@ -1,68 +1,83 @@
 <?php get_header();wp_reset_query();  $format = get_post_format();?>
-<?php $term_list = wp_get_post_terms($post->ID, 'category', array("fields" => "ids"));$a=$post->ID; ?>
+<?php $term_list = wp_get_post_terms($post->ID, 'category', array("fields" => "ids"));
+$a = $post->ID; ?>
 <?php while (have_posts()) : the_post(); setPostViews($post->ID);?>
 <main id="main">
     <?php get_template_part('breadcrums'); ?>
-    <div class="page-body">
+    <div class="single-service-page">
         <div class="container">
-            <?php if($format=='aside' ){ ?>
-            
-            <?php }elseif($format=='chat' ){ ?>
+            <div class="inner">
+                <h1 class="post-title"><?php the_title();?></h1>
 
-            <?php }else{ ?>
-            <div class="row row-margin">
-                <div class="col-lg-9 col-md-12">
-                    <h1 class="page-title"><?php the_title();?></h1>
-                    <?php get_template_part('meta'); ?>
-                    <div class="page-content">
-                        <div class="content-post clearfix">
-                            <?php the_content(); ?>
-                        </div>
-                    </div>
-                    <div class="single-tags">
-                    <?php the_tags( 'Tags: ', ' '); ?>
-                    </div>
-                    <div class="page-content">
-                        <?php comments_template(); ?>
-                    </div>
-                    <?php
-                    $categories = get_the_category(get_the_ID());
-                    if ($categories){
-                    
-                    $category_ids = array();
-                    foreach($categories as $individual_category) $category_ids[] = $individual_category->term_id;
-                    $args=array(
-                    'category__in' => $category_ids,
-                    'post__not_in' => array(get_the_ID()),
-                    'posts_per_page' => 4,
-                    );
-                    $my_query = new wp_query($args);
-                    if( $my_query->have_posts() ): ?>
-                    <div class="single-related">
-                        <div class="title">Bài viết liên quan</div>
-                        <div class="list">
-                            <?php while ($my_query->have_posts()):$my_query->the_post(); ?>
-                            <div class="item">
-                                <div class="img">
-                                    <a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_post_thumbnail('medium', array('alt'   => trim(strip_tags( $post->post_title )),'title' => trim(strip_tags( $post->post_title )),)); ?></a>
-                                </div>
-                                <div class="info">
-                                    <div class="name"><a href="<?php the_permalink();?>"><?php the_title();?></a></div>
-                                    <div class="date"><?php the_time('d/m/Y'); ?></div>
-                                </div>
-                            </div>
-                            <?php endwhile; ?>
-                        </div>  
-                    </div>
-                    <?php endif; wp_reset_query();} ?>
+                <div class="toc-service">
+                    <?php echo do_shortcode('[toc]'); ?>
                 </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="page-sidebar">
-                        <?php get_template_part('sidebar'); ?>
+
+                <div class="page-content">
+                    <div class="content-post clearfix">
+                        <?php the_content(); ?>
                     </div>
                 </div>
             </div>
-            <?php } ?>
+            <div class="share-post">
+                <span>Chia sẻ bài viết: </span>
+                <?php echo do_shortcode('[addtoany]'); ?>
+            </div>
+            <div class="related-service">
+                <h2 class="title-related">Bài viết khác:</h2>
+                <div class="list-service">
+                    <?php
+                    // Get service categories (taxonomy: service_cat) for current post
+                    $service_categories = wp_get_post_terms(get_the_ID(), 'category', array('fields' => 'ids'));
+                    $args = array(
+                        'post_type' => 'post',
+                        'posts_per_page' => 4,
+                        'post__not_in' => array(get_the_ID()),
+                        'orderby' => 'date',
+                        'order' => 'DESC',
+                        'post_status' => 'publish',
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'category',
+                                'field'    => 'term_id',
+                                'terms'    => $service_categories,
+                            ),
+                        ),
+                    );
+                    $related_posts = new WP_Query($args);
+                    if ($related_posts->have_posts()):
+                        while ($related_posts->have_posts()):
+                            $related_posts->the_post();
+                            ?>
+                            <div class="item-service">
+                                <div class="item-img">
+                                    <a href="<?php the_permalink() ?>">
+                                        <figure>
+                                            <img class="img-service"
+                                                src="<?php the_post_thumbnail_url('large'); ?>"
+                                                alt="<?php the_title() ?>"
+                                                title="<?php the_title() ?>">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h3 class="title">
+                                        <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                                    </h3>
+                                    <p class="desc">
+                                        <?php echo wp_trim_words(get_the_content(), 50, '...'); ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    else:
+                        echo '<li>Không có bài viết liên quan.</li>';
+                    endif;
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </main>

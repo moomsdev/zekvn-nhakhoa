@@ -1,3 +1,11 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixin' as *;
 
+.breadcrumbs {
+    padding: 10px 0px;
+    background: #ddd;
+    
+    p {
+        margin-bottom: 0;
+    }
+}

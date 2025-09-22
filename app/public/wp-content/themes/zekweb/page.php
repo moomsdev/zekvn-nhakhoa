@@ -10,7 +10,16 @@
                     <?php the_content(); ?>
                 </div>
             </div>
+
+            <div class="share-post">
+                <span>Chia sẻ bài viết: </span>
+                <?php echo do_shortcode('[addtoany]'); ?>
+            </div>
         </div>
+
+        <?php
+            get_template_part('template-parts/section-contact');
+        ?>
     </div>
 </main>
 <?php endwhile; ?>

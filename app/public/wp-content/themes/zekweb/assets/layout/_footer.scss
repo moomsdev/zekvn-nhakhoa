@@ -1,5 +1,135 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixin' as *;
 
+footer {
+    background-color: $primaryColor;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    padding: 76px 0 50px 0px;
+    font-size: 14px;
 
+    @include mediaMaxWidth($md) {
+        padding: 30px 0 20px;
+    }
 
+    .logo-footer {
+        margin-bottom: 16px;
+
+        img {
+            width: fit-content;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .slogan {
+        margin-bottom: 16px;
+        max-width: 85%;
+    }
+
+    .info-company {
+        @include mediaMaxWidth($md) {
+            margin-bottom: 40px;
+        }
+
+        p {
+            margin-bottom: 6px;
+            line-height: normal;
+        }
+    }
+
+    .title-footer-col {
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    .brands {
+        @include mediaMaxWidth($md) {
+            margin-bottom: 30px;
+        }
+
+        .brand {
+            margin-bottom: 30px;
+        }
+
+        .province {
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 700;
+            color: $subColor;
+            text-transform: uppercase;
+        }
+
+        .brand-detail {
+            list-style: none;
+            
+            .item {
+                margin-bottom: 16px;
+            }
+        }
+    }
+
+    .working-time {
+        @include mediaMaxWidth($md) {
+            margin-bottom: 40px;
+        }
+    }
+
+    .copyright {
+        border-top: 1px solid #0B8699;
+        padding-top: 20px;
+        text-align: center;
+        font-size: 15px;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .nav-footer {
+        ul {
+            list-style: none;
+
+            li {
+                a {
+                    padding: 5px 0 5px 16px;
+                    display: block;
+                    color: #fff;
+                    text-decoration: none;
+                    position: relative;
+                    
+                    &:hover {
+                        color: $subColor;
+                    }
+
+                    &:before {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 4px;
+                        content: "";
+                        display: block;
+                        width: 2px;
+                        height: 8px;
+                        background: $subColor;
+                    }
+                    &:after {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 1px;
+                        content: "";
+                        display: block;
+                        width: 8px;
+                        height: 2px;
+                        background: $subColor;
+                    }
+                }
+            }
+        }
+    }
+}

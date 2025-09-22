@@ -9,21 +9,23 @@
   box-sizing: border-box;
 }
 
-html {
-	height: 100%;
-  font-size: 62.5%;
-  overflow-y: scroll;
-	overflow-scrolling: touch;
-	-webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
+// html {
+// 	height: 100%;
+//   overflow-y: scroll;
+// 	overflow-scrolling: touch;
+// 	-webkit-overflow-scrolling: touch;
+//   scroll-behavior: smooth;
+// }
 
 body {
-  font-family: $primaryFont;
-  line-height: 1.5;
-  color: $textColor;
-  font-weight: 400;
-  @include resFont(16px, 18px);
+  font-family: $primaryFont !important;
+  color: $textColor !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  font-style: normal !important;
+  line-height: normal !important;
+
+  @include resFont(13px, 14px, true);
 }
 
 ::-webkit-scrollbar {
@@ -61,10 +63,6 @@ bdi::selection {
   background-color: $primaryColor;
 }
 
-.zek-web a:hover {
-  color: $primaryColor;
-}
-
 h1,
 h2,
 h3,
@@ -85,6 +83,10 @@ img {
 
 p:empty {
   display: none;
+}
+
+.container {
+  max-width: 1300px !important;
 }
 
 .full-width {
@@ -121,4 +123,8 @@ p:empty {
 
 .multi-line-4 {
   @include limitLine(4);
+}
+
+.title a {
+  color: $textColor;
 }
